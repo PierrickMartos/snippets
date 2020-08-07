@@ -1,6 +1,7 @@
 # Kubernetes snippets
 
-* TOC {:toc}
+* TOC
+{:toc}
 
 ## Linking EKS with acs cli
 
