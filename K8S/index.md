@@ -14,7 +14,7 @@ title: Kubernetes
 
 ----
 
-## Linking EKS with acs cli
+## Linking EKS with aws cli
 
 `aws eks --region us-east-2 update-kubeconfig --name eksCLusterName`
 
