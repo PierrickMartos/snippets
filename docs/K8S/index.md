@@ -1,7 +1,18 @@
-# Kubernetes snippets
+---
+layout: default
+title: Kubernetes
+---
 
-* TOC
+# Kubernetes
+{: .no_toc }
+
+### Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
 {:toc}
+
+----
 
 ## Linking EKS with acs cli
 

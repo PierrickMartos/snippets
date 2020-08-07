@@ -2,4 +2,4 @@
 
 This repository contains all of my snippets.
 
-{:toc}
+[https://pierrickmartos.github.io/snippets/](https://pierrickmartos.github.io/snippets/)
