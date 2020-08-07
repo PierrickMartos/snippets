@@ -36,3 +36,41 @@ Then apply RBAC:
 `kubectl proxy`
 
 Then go to [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
+
+## Add secret to a private registry
+
+First, generate a deploy tokens into the project / group : settings > repository > Deploy tokens. **Check only read registry**
+
+`kubectl create secret docker-registry registry.gitlab.com --docker-server=https://registry.gitlab.com --docker-username=gitlab+deploy-token-xxxxxx --docker-password=mypassword --docker-email=mymail@mysam.co`
+
+Then into the pod yml add:
+```yaml
+spec:
+  containers:
+    - name: example
+      image: 'registry.gitlab.com/my-sam/devops/environment/nginx:latest'
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 250m
+          memory: 50Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 30
+  dnsPolicy: ClusterFirst
+  serviceAccountName: default
+  serviceAccount: default
+  automountServiceAccountToken: false
+  nodeName: ip-10-0-2-218.us-east-2.compute.internal
+  shareProcessNamespace: false
+  securityContext: {}
+  imagePullSecrets:
+    - name: registry.gitlab.com
+```
