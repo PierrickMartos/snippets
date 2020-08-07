@@ -4,7 +4,7 @@
 
 `aws eks --region us-east-2 update-kubeconfig --name eksCLusterName`
 
->> Replace region name and `eksClusterName` with cluster name
+> Replace region name and `eksClusterName` with cluster name
 
 ## Setup dashboard
 
@@ -29,7 +29,7 @@ Then apply RBAC:
 
 `kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')`
 
->> Replace `admin-user` with right user
+> Replace `admin-user` with right user
 
 ## Connect to dashboard
 
