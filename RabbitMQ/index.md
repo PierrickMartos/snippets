@@ -1,4 +1,4 @@
-# Commands
+# RabbitMQ
 
 ## List queues
 
