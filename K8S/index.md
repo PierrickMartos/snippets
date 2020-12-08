@@ -18,7 +18,16 @@ title: Kubernetes
 
 `aws eks --region us-east-2 update-kubeconfig --name eksCLusterName`
 
-> Replace region name and `eksClusterName` with cluster name
+> Replace region name `us-east-2` with the good one and `eksClusterName` with cluster name
+
+## Unauthorized to run commands or how to link kubectl to an existing cluster
+
+If you have `error: You must be logged in to the server (Unauthorized)` this type of error:
+
+1. Get yours arn : `aws sts get-caller-identity`
+2. Then update config with `aws eks update-kubeconfig --name eksCLusterNames --region eu-west-1 --role-arn arn:aws:iam::xxxxxxx:user/pierrick`
+
+Replace `role-arn` with the role from step 1 and replace `eksCLusterName` wih your cluster name and the right region.
 
 ## Setup dashboard
 
